@@ -256,30 +256,30 @@ footer {
 
 .agendar {
   padding: 60px 20px;
+  background-color: #fefefe;
   text-align: center;
-  background-color: #f9fbfd;
 }
 
 .agendar h1 {
-  font-size: 2.4em;
+  font-size: 2.2em;
   color: #026aa7;
   margin-bottom: 10px;
 }
 
 .agendar p {
-  font-size: 1.1em;
-  margin-bottom: 40px;
-  color: #555;
+  font-size: 1.05em;
+  color: #666;
+  margin-bottom: 35px;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .agendar-opciones {
-  background-color: white;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -288,27 +288,34 @@ footer {
   margin: auto;
 }
 
+.agendar-opciones label {
+  font-weight: bold;
+  font-size: 1em;
+  color: #01497c;
+}
+
 .agendar-opciones select {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1em;
   width: 100%;
+  background-color: #f9fbfd;
 }
 
 .btn-whatsapp {
-  background-color: #25D366;
+  background-color: #24cc63;
   color: white;
   font-weight: bold;
-  padding: 12px 24px;
+  padding: 14px 26px;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 8px;
   transition: background-color 0.3s ease;
-  display: inline-block;
   width: 100%;
   text-align: center;
+  font-size: 1em;
 }
 
 .btn-whatsapp:hover {
-  background-color: #1ebe5d;
+  background-color: #1dbb5a;
 }
