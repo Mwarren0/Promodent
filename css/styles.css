@@ -319,3 +319,57 @@ footer {
 .btn-whatsapp:hover {
   background-color: #1dbb5a;
 }
+
+/* Login */
+
+.login {
+  padding: 80px 20px;
+  background-color: #f9fbfd;
+  text-align: center;
+}
+
+.login h1 {
+  font-size: 2.2em;
+  color: #026aa7;
+  margin-bottom: 10px;
+}
+
+.login p {
+  font-size: 1.05em;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.login-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+  max-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.login-form button {
+  background-color: #026aa7;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #01497c;
+}
