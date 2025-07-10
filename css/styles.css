@@ -1,91 +1,86 @@
-/* Reset básico */
+/* Reset y fuente base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Fuente general y fondo */
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f8fc;
+  background-color: #f0f4fa;
   color: #333;
 }
 
-/* Barra superior */
+/* Top Bar de contacto */
 .top-bar {
   background-color: #01497c;
   color: white;
-  padding: 10px 20px;
+  padding: 8px 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 0.9em;
 }
 
-.top-bar .contact-info span {
-  margin-right: 20px;
-}
-
-.top-bar .social-icons a {
+.top-bar a img {
+  width: 20px;
   margin-left: 10px;
 }
 
 /* Navbar principal */
-header {
-  background-color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.navbar h1 {
-  color: #026aa7;
+.logo {
   font-size: 1.8em;
+  color: #026aa7;
+  font-weight: bold;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 25px;
-  align-items: center;
+  gap: 20px;
 }
 
 .nav-links a {
   text-decoration: none;
   color: #01497c;
   font-weight: bold;
-  transition: color 0.3s ease;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
   color: #0180c0;
+  background-color: #e6f2ff;
+  border-radius: 6px;
 }
 
 .btn-agendar {
   background-color: #026aa7;
   color: white !important;
-  padding: 8px 16px;
   border-radius: 6px;
-  text-decoration: none;
 }
 
-/* Sección Hero principal */
+/* Hero principal */
 .hero {
-  text-align: center;
-  padding: 60px 20px;
   background: url('../img/odontologia.jpg') center/cover no-repeat;
+  padding: 80px 20px;
+  text-align: center;
   color: white;
   background-blend-mode: multiply;
-  background-color: #026aa7;
+  background-color: rgba(2,106,167,0.7);
 }
 
-.hero h2 {
-  font-size: 2.5em;
+.hero h1 {
+  font-size: 2.8em;
   margin-bottom: 15px;
 }
 
@@ -103,7 +98,7 @@ header {
 }
 
 .btn-primary {
-  background-color: #ffffff;
+  background-color: white;
   color: #026aa7;
 }
 
@@ -120,4 +115,26 @@ footer {
   background-color: #01497c;
   color: white;
   font-size: 0.9em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero h1 {
+    font-size: 2em;
+  }
+
+  .hero p {
+    font-size: 1em;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
