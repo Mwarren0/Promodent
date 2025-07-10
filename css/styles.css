@@ -11,7 +11,7 @@ body {
   color: #333;
 }
 
-/* Top Bar de contacto */
+/* TOP BAR */
 .top-bar {
   background-color: #01497c;
   color: white;
@@ -22,12 +22,20 @@ body {
   font-size: 0.9em;
 }
 
-.top-bar a img {
-  width: 20px;
-  margin-left: 10px;
+.top-bar .left-info span {
+  margin-right: 15px;
 }
 
-/* Navbar principal */
+.top-bar .right-info span {
+  margin-right: 15px;
+}
+
+.top-bar a img {
+  width: 20px;
+  vertical-align: middle;
+}
+
+/* NAVBAR */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -63,13 +71,18 @@ body {
   border-radius: 6px;
 }
 
+.nav-links a.active {
+  border-bottom: 3px solid #026aa7;
+}
+
 .btn-agendar {
   background-color: #026aa7;
   color: white !important;
   border-radius: 6px;
+  padding: 8px 12px;
 }
 
-/* Hero principal */
+/* HERO SECTION */
 .hero {
   background: url('../img/odontologia.jpg') center/cover no-repeat;
   padding: 80px 20px;
@@ -95,6 +108,7 @@ body {
   margin: 0 10px;
   border-radius: 6px;
   font-weight: bold;
+  display: inline-block;
 }
 
 .btn-primary {
@@ -108,37 +122,7 @@ body {
   color: white;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #01497c;
-  color: white;
-  font-size: 0.9em;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .hero h1 {
-    font-size: 2em;
-  }
-
-  .hero p {
-    font-size: 1em;
-  }
-
-  .hero-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
+/* SERVICIOS */
 .servicios {
   padding: 60px 20px;
   text-align: center;
@@ -191,4 +175,40 @@ footer {
 .servicio-card p {
   font-size: 0.95em;
   color: #444;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #01497c;
+  color: white;
+  font-size: 0.9em;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .hero h1 {
+    font-size: 2em;
+  }
+
+  .hero p {
+    font-size: 1em;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .servicios-grid {
+    grid-template-columns: 1fr;
+  }
 }
