@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendar Cita - Promodent</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Promodent</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="agendar.html" class="active btn-agendar">Agendar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="agendar">
+      <h1>Agenda tu Cita</h1>
+      <p>Selecciona el tratamiento que necesitas y comunícate con nosotros por WhatsApp para confirmar tu atención.</p>
+
+      <div class="agendar-opciones">
+        <label for="tratamiento">Tipo de tratamiento:</label>
+        <select id="tratamiento">
+          <option>Limpieza Dental</option>
+          <option>Ortodoncia</option>
+          <option>Implantes Dentales</option>
+          <option>Blanqueamiento</option>
+        </select>
+
+        <a
+          id="btn-agendar"
+          href="#"
+          target="_blank"
+          class="btn-whatsapp">
+          Abrir WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Promodent. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const select = document.getElementById("tratamiento");
+    const boton = document.getElementById("btn-agendar");
+
+    select.addEventListener("change", () => {
+      const tratamiento = encodeURIComponent(select.value);
+      const mensaje = `Hola Promodent, quiero agendar una cita para ${tratamiento}`;
+      const numero = "593XXXXXXXXX"; // Reemplaza con número real
+      boton.href = `https://wa.me/${numero}?text=${mensaje}`;
+    });
+
+    // Generar enlace inicial
+    select.dispatchEvent(new Event("change"));
+  </script>
+</body>
+</html>
