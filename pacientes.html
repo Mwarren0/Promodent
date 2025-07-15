@@ -148,7 +148,7 @@
           <td class="acciones">
             <button class="editar" onclick="editarPaciente(${i})">Editar</button>
             <button class="eliminar" onclick="eliminarPaciente(${i})">Eliminar</button>
-            <button class="historial" onclick="mostrarHistorial(${i})">Ver historial</button>
+            <button class="historial" onclick="abrirHistorial(${i})">Historia</button>
           </td>
         `;
         tbody.appendChild(fila);
@@ -237,7 +237,11 @@
         fila.style.display = nombre.includes(filtro) ? "" : "none";
       });
     }
-
+    
+    function abrirHistorial(index) {
+     const paciente = pacientes[index];
+     window.location.href = `historial.html?nombre=${encodeURIComponent(paciente.nombre)}`;
+    }   
     // Inicializa la tabla al cargar la página
     renderizarTabla();
   </script>

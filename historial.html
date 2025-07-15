@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historia Clínica - Promodent</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .historia {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+    }
+    .historia h1 {
+      text-align: center;
+      color: #026aa7;
+      margin-bottom: 20px;
+    }
+    .campo {
+      margin-bottom: 20px;
+    }
+    .campo label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #01497c;
+    }
+    .campo input, .campo textarea, .campo select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+    .guardar {
+      background-color: #026aa7;
+      color: white;
+      border: none;
+      padding: 14px;
+      width: 100%;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .guardar:hover {
+      background-color: #01497c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Promodent</div>
+      <ul class="nav-links">
+        <li><a href="dashboard.html">Panel</a></li>
+        <li><a href="login.html">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="historia">
+    <h1>Historia Clínica Odontológica</h1>
+
+    <div class="campo">
+      <label>Nombre del paciente</label>
+      <input type="text" id="nombre" />
+    </div>
+
+    <div class="campo">
+      <label>Edad</label>
+      <input type="number" id="edad" />
+    </div>
+
+    <div class="campo">
+      <label>Motivo de consulta</label>
+      <textarea id="motivo" rows="3"></textarea>
+    </div>
+
+    <div class="campo">
+      <label>Antecedentes médicos</label>
+      <textarea id="antecedentes" rows="4"></textarea>
+    </div>
+
+    <div class="campo">
+      <label>Evaluación bucal</label>
+      <textarea id="evaluacion" rows="4"></textarea>
+    </div>
+
+    <div class="campo">
+      <label>Diagnóstico odontológico</label>
+      <textarea id="diagnostico" rows="3"></textarea>
+    </div>
+
+    <div class="campo">
+      <label>Tratamiento propuesto</label>
+      <textarea id="tratamiento" rows="4"></textarea>
+    </div>
+
+    <div class="campo">
+      <label>Presupuesto estimado</label>
+      <input type="text" id="presupuesto" />
+    </div>
+
+    <div class="campo">
+      <label>Fecha de próxima cita</label>
+      <input type="date" id="proxima" />
+    </div>
+
+    <button class="guardar" onclick="guardarHistorial()">Guardar Historia Clínica</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Promodent. Historia clínica del paciente.</p>
+  </footer>
+
+  <script>
+    function guardarHistorial() {
+      const datos = {
+        nombre: document.getElementById("nombre").value,
+        edad: document.getElementById("edad").value,
+        motivo: document.getElementById("motivo").value,
+        antecedentes: document.getElementById("antecedentes").value,
+        evaluacion: document.getElementById("evaluacion").value,
+        diagnostico: document.getElementById("diagnostico").value,
+        tratamiento: document.getElementById("tratamiento").value,
+        presupuesto: document.getElementById("presupuesto").value,
+        proxima: document.getElementById("proxima").value
+      };
+
+      localStorage.setItem("historia_" + datos.nombre, JSON.stringify(datos));
+      alert("Historial clínico guardado exitosamente.");
+    }
+  </script>
+
+<script>
+  function getNombreDesdeURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("nombre");
+  }
+
+  function cargarHistorial() {
+    const nombre = getNombreDesdeURL();
+    if (!nombre) return;
+
+    document.getElementById("nombre").value = nombre;
+
+    const historia = JSON.parse(localStorage.getItem("historia_" + nombre));
+    if (historia) {
+      document.getElementById("edad").value = historia.edad || "";
+      document.getElementById("motivo").value = historia.motivo || "";
+      document.getElementById("antecedentes").value = historia.antecedentes || "";
+      document.getElementById("evaluacion").value = historia.evaluacion || "";
+      document.getElementById("diagnostico").value = historia.diagnostico || "";
+      document.getElementById("tratamiento").value = historia.tratamiento || "";
+      document.getElementById("presupuesto").value = historia.presupuesto || "";
+      document.getElementById("proxima").value = historia.proxima || "";
+    }
+  }
+
+  function guardarHistorial() {
+    const nombre = document.getElementById("nombre").value;
+    const historia = {
+      edad: document.getElementById("edad").value,
+      motivo: document.getElementById("motivo").value,
+      antecedentes: document.getElementById("antecedentes").value,
+      evaluacion: document.getElementById("evaluacion").value,
+      diagnostico: document.getElementById("diagnostico").value,
+      tratamiento: document.getElementById("tratamiento").value,
+      presupuesto: document.getElementById("presupuesto").value,
+      proxima: document.getElementById("proxima").value
+    };
+
+    localStorage.setItem("historia_" + nombre, JSON.stringify(historia));
+    alert("Historial clínico guardado exitosamente.");
+  }
+
+  window.onload = cargarHistorial;
+</script>
+
+</body>
+</html>
