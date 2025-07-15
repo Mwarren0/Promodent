@@ -484,3 +484,24 @@ footer {
 .tabla-pacientes tr:hover {
   background-color: #f9fbfd;
 }
+
+.dashboard .panel-opciones a {
+  display: inline-block;
+  margin: 10px;
+  padding: 14px 24px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard .btn-primary {
+  background-color: #026aa7;
+  color: white;
+}
+
+.dashboard .btn-secondary {
+  background-color: #f0f4fa;
+  color: #026aa7;
+  border: 2px solid #026aa7;
+}

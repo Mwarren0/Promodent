@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Administración - Promodent</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Promodent</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="dashboard.html" class="active">Panel</a></li>
+        <li><a href="#" id="cerrar-sesion">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h1>Bienvenido al panel de administración</h1>
+      <p>Aquí podrás gestionar las citas, tratamientos y usuarios.</p>
+
+      <div class="panel-opciones">
+        <a href="#" class="btn-primary">Ver citas agendadas</a>
+        <a href="#" class="btn-secondary">Administrar servicios</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Promodent. Panel administrativo.</p>
+  </footer>
+
+  <script>
+    // Simulación de cierre de sesión
+    document.getElementById("cerrar-sesion").addEventListener("click", function(e) {
+      e.preventDefault();
+      alert("Sesión cerrada");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

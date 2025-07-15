@@ -26,7 +26,7 @@
       <h1>Acceso al Sistema de Gestión</h1>
       <p>Solo personal autorizado puede ingresar.</p>
 
-      <form action="login.php" method="POST" class="login-form">
+      <form class="login-form">
         <input type="text" name="usuario" placeholder="Usuario" required />
         <input type="password" name="contrasena" placeholder="Contraseña" required />
         <button type="submit">Ingresar</button>
@@ -38,5 +38,23 @@
   <footer>
     <p>&copy; 2025 Promodent. Todos los derechos reservados.</p>
   </footer>
+
+<script>
+  document.querySelector(".login-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const usuario = document.querySelector("input[name='usuario']").value;
+    const contrasena = document.querySelector("input[name='contrasena']").value;
+
+    if (usuario === "admin" && contrasena === "1234") {
+      alert("Inicio de sesión exitoso");
+      window.location.href = "dashboard.html";
+    } else {
+      alert("Usuario o contraseña incorrectos");
+    }
+  });
+</script>
+
+
+
 </body>
 </html>
