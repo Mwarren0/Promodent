@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacientes - Promodent</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Promodent</div>
+      <ul class="nav-links">
+        <li><a href="dashboard.html">Panel</a></li>
+        <li><a href="login.html">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pacientes">
+    <h1>Gestión de pacientes</h1>
+    <p>Administra los datos de tus pacientes desde esta sección</p>
+
+    <div class="busqueda">
+      <input type="text" id="filtro" placeholder="Buscar por nombre..." />
+      <button onclick="filtrarPacientes()">Buscar</button>
+    </div>
+
+    <div class="tabla-pacientes">
+      <table id="tabla">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Tratamiento</th>
+            <th>Teléfono</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ana Torres</td>
+            <td>32</td>
+            <td>Implantes Dentales</td>
+            <td>+593 987654321</td>
+            <td>Activo</td>
+          </tr>
+          <tr>
+            <td>Marco Lema</td>
+            <td>45</td>
+            <td>Ortodoncia</td>
+            <td>+593 954321789</td>
+            <td>Inactivo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Promodent. Panel administrativo.</p>
+  </footer>
+
+  <script>
+    function filtrarPacientes() {
+      const filtro = document.getElementById("filtro").value.toLowerCase();
+      const filas = document.querySelectorAll("#tabla tbody tr");
+
+      filas.forEach(fila => {
+        const nombre = fila.cells[0].textContent.toLowerCase();
+        fila.style.display = nombre.includes(filtro) ? "" : "none";
+      });
+    }
+  </script>
+</body>
+</html>
