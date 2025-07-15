@@ -18,16 +18,18 @@
     </nav>
   </header>
 
-  <main>
-    <section class="panel">
-      <h1>Bienvenido al panel de administración</h1>
-      <p>Aquí podrás gestionar las citas, tratamientos y usuarios.</p>
+  <main class="dashboard">
+    <h1>Panel de Administración</h1>
+    <p>Selecciona una sección para continuar:</p>
 
-      <div class="panel-opciones">
-        <a href="#" class="btn-primary">Ver citas agendadas</a>
-        <a href="#" class="btn-secondary">Administrar servicios</a>
-      </div>
-    </section>
+    <div class="panel-grid">
+      <a href="#" class="panel-card">Citas agendadas</a>
+      <a href="#" class="panel-card">Pacientes</a>
+      <a href="#" class="panel-card">Servicios</a>
+      <a href="#" class="panel-card">Horarios</a>
+      <a href="#" class="panel-card">Configuración</a>
+      <a href="#" class="panel-card">Usuarios</a>
+    </div>
   </main>
 
   <footer>
@@ -35,7 +37,6 @@
   </footer>
 
   <script>
-    // Simulación de cierre de sesión
     document.getElementById("cerrar-sesion").addEventListener("click", function(e) {
       e.preventDefault();
       alert("Sesión cerrada");
