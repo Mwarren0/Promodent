@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pacientes - Promodent</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .modulo-agregar {
+      background-color: #ffffff;
+      padding: 30px;
+      margin: 40px auto;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+    }
+    .modulo-agregar input, .modulo-agregar select {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    .modulo-agregar button {
+      background-color: #026aa7;
+      color: white;
+      font-weight: bold;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .modulo-agregar button:hover {
+      background-color: #01497c;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -19,13 +50,34 @@
 
   <main class="pacientes">
     <h1>Gestión de pacientes</h1>
-    <p>Administra los datos de tus pacientes desde esta sección</p>
+    <p>Administra tus registros desde esta sección</p>
 
     <div class="busqueda">
       <input type="text" id="filtro" placeholder="Buscar por nombre..." />
       <button onclick="filtrarPacientes()">Buscar</button>
     </div>
 
+    <!-- Módulo para agregar pacientes -->
+    <div class="modulo-agregar">
+      <h2>Agregar nuevo paciente</h2>
+      <input type="text" id="nombre" placeholder="Nombre completo" required />
+      <input type="number" id="edad" placeholder="Edad" required />
+      <select id="tratamiento">
+        <option value="">Seleccione tratamiento</option>
+        <option>Limpieza Dental</option>
+        <option>Ortodoncia</option>
+        <option>Implantes Dentales</option>
+        <option>Blanqueamiento</option>
+      </select>
+      <input type="text" id="telefono" placeholder="Teléfono de contacto" required />
+      <select id="estado">
+        <option value="Activo">Activo</option>
+        <option value="Inactivo">Inactivo</option>
+      </select>
+      <button onclick="agregarPaciente()">Guardar paciente</button>
+    </div>
+
+    <!-- Tabla de pacientes -->
     <div class="tabla-pacientes">
       <table id="tabla">
         <thead>
@@ -45,13 +97,6 @@
             <td>+593 987654321</td>
             <td>Activo</td>
           </tr>
-          <tr>
-            <td>Marco Lema</td>
-            <td>45</td>
-            <td>Ortodoncia</td>
-            <td>+593 954321789</td>
-            <td>Inactivo</td>
-          </tr>
         </tbody>
       </table>
     </div>
@@ -65,11 +110,41 @@
     function filtrarPacientes() {
       const filtro = document.getElementById("filtro").value.toLowerCase();
       const filas = document.querySelectorAll("#tabla tbody tr");
-
       filas.forEach(fila => {
         const nombre = fila.cells[0].textContent.toLowerCase();
         fila.style.display = nombre.includes(filtro) ? "" : "none";
       });
+    }
+
+    function agregarPaciente() {
+      const nombre = document.getElementById("nombre").value;
+      const edad = document.getElementById("edad").value;
+      const tratamiento = document.getElementById("tratamiento").value;
+      const telefono = document.getElementById("telefono").value;
+      const estado = document.getElementById("estado").value;
+
+      if (!nombre || !edad || !tratamiento || !telefono || !estado) {
+        alert("Por favor, completa todos los campos");
+        return;
+      }
+
+      const tabla = document.querySelector("#tabla tbody");
+      const fila = document.createElement("tr");
+      fila.innerHTML = `
+        <td>${nombre}</td>
+        <td>${edad}</td>
+        <td>${tratamiento}</td>
+        <td>${telefono}</td>
+        <td>${estado}</td>
+      `;
+      tabla.appendChild(fila);
+
+      // Limpia el formulario
+      document.getElementById("nombre").value = "";
+      document.getElementById("edad").value = "";
+      document.getElementById("tratamiento").value = "";
+      document.getElementById("telefono").value = "";
+      document.getElementById("estado").value = "";
     }
   </script>
 </body>
