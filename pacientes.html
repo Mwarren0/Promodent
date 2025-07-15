@@ -10,11 +10,13 @@
       background-color: #ffffff;
       padding: 30px;
       margin: 40px auto;
-      max-width: 500px;
+      max-width: 600px;
       border-radius: 10px;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
     }
-    .modulo-agregar input, .modulo-agregar select {
+    .modulo-agregar input,
+    .modulo-agregar select,
+    .modulo-agregar textarea {
       width: 100%;
       margin-bottom: 15px;
       padding: 12px;
@@ -36,7 +38,7 @@
       background-color: #01497c;
     }
     .acciones button {
-      margin: 0 5px;
+      margin: 0 4px;
       padding: 6px 12px;
       font-size: 0.9em;
       cursor: pointer;
@@ -49,6 +51,10 @@
     }
     .eliminar {
       background-color: #dc3545;
+      color: white;
+    }
+    .historial {
+      background-color: #6c757d;
       color: white;
     }
   </style>
@@ -73,6 +79,7 @@
       <button onclick="filtrarPacientes()">Buscar</button>
     </div>
 
+    <!-- Formulario para agregar/editar pacientes -->
     <div class="modulo-agregar">
       <h2 id="form-titulo">Agregar nuevo paciente</h2>
       <input type="text" id="nombre" placeholder="Nombre completo" />
@@ -92,6 +99,7 @@
       <button onclick="guardarPaciente()">Guardar paciente</button>
     </div>
 
+    <!-- Tabla de pacientes -->
     <div class="tabla-pacientes">
       <table id="tabla">
         <thead>
@@ -107,6 +115,13 @@
         <tbody></tbody>
       </table>
     </div>
+
+    <!-- Historial clínico -->
+    <div id="historial-container" class="modulo-agregar" style="display:none;">
+      <h2>Historial clínico de <span id="historial-nombre"></span></h2>
+      <textarea id="historial-texto" rows="6" placeholder="Notas médicas, citas anteriores, observaciones..."></textarea>
+      <button onclick="guardarHistorial()">Guardar historial</button>
+    </div>
   </main>
 
   <footer>
@@ -117,6 +132,7 @@
     let pacientes = JSON.parse(localStorage.getItem("pacientes")) || [];
     let editando = false;
     let indiceEditar = -1;
+    let historialActivo = -1;
 
     function renderizarTabla() {
       const tbody = document.querySelector("#tabla tbody");
@@ -132,6 +148,7 @@
           <td class="acciones">
             <button class="editar" onclick="editarPaciente(${i})">Editar</button>
             <button class="eliminar" onclick="eliminarPaciente(${i})">Eliminar</button>
+            <button class="historial" onclick="mostrarHistorial(${i})">Ver historial</button>
           </td>
         `;
         tbody.appendChild(fila);
@@ -150,7 +167,7 @@
         return;
       }
 
-      const nuevo = { nombre, edad, tratamiento, telefono, estado };
+      const nuevo = { nombre, edad, tratamiento, telefono, estado, historial: "" };
 
       if (editando) {
         pacientes[indiceEditar] = nuevo;
@@ -183,7 +200,25 @@
         pacientes.splice(index, 1);
         localStorage.setItem("pacientes", JSON.stringify(pacientes));
         renderizarTabla();
+        document.getElementById("historial-container").style.display = "none";
       }
+    }
+
+    function mostrarHistorial(index) {
+      const p = pacientes[index];
+      historialActivo = index;
+      document.getElementById("historial-nombre").textContent = p.nombre;
+      document.getElementById("historial-texto").value = p.historial || "";
+      document.getElementById("historial-container").style.display = "block";
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+
+    function guardarHistorial() {
+      if (historialActivo === -1) return;
+      pacientes[historialActivo].historial = document.getElementById("historial-texto").value;
+      localStorage.setItem("pacientes", JSON.stringify(pacientes));
+      alert("Historial guardado correctamente");
+      document.getElementById("historial-container").style.display = "none";
     }
 
     function limpiarFormulario() {
@@ -194,7 +229,7 @@
       document.getElementById("estado").value = "";
     }
 
-    function filtrarPacientes() {
+        function filtrarPacientes() {
       const filtro = document.getElementById("filtro").value.toLowerCase();
       const filas = document.querySelectorAll("#tabla tbody tr");
       filas.forEach(fila => {
@@ -203,6 +238,7 @@
       });
     }
 
+    // Inicializa la tabla al cargar la página
     renderizarTabla();
   </script>
 </body>
